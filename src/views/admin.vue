@@ -90,23 +90,31 @@ export default {
               objet.price= this.price;
               objet.id_brand= this.id_brand;
               console.log(objet);
+              if (this.val == "") 
+              {alert("Produit non ajouté : veuillez renseigner les champs manquants.")}
+              else {
               axios.post("http://localhost:5000/api/tshirts/admin/products/add", objet)
               .then( function(res) {
                   console.log(res)
               })
               .then(document.location.reload(true))
+              }
           },
 
           postMarque() {
               console.log("ça post");
               let nameM = this.nameM;
               console.log(nameM);
+              if (this.val == "") 
+              {alert("Marque non ajoutée : veuillez renseigner les champs manquants.")}
+              else {
               axios.post("http://localhost:5000/api/tshirts/addBrand", {value: nameM})
               .then( function(res) {
                   console.log(res)
               })
               .then(document.location.reload(true))
-          },
+              }
+           },
 
 
           deleteProduit(){
@@ -156,7 +164,6 @@ export default {
                   })
               }
           }
-
 
         // postProduits() {
         //     this.$store.dispatch('PostTshirts')
